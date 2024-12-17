@@ -8,7 +8,8 @@
     <!-- Базовый шаблон. Блок title -->
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="image/jpg" href="{% static 'images/favicon.jpg' %}">
+    {% block head %}{% endblock %}
   </head>
   <body>
     <header>
