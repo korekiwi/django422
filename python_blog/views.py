@@ -19,8 +19,8 @@ MENU_ITEMS = [
 
 
 def main(request):
-    catalog_categories_url = reverse("blog:categories")
-    catalog_tags_url = reverse("blog:tags")
+    # catalog_categories_url = reverse("blog:categories")
+    # catalog_tags_url = reverse("blog:tags")
 
     context = {
         "title": "Главная страница",
@@ -29,6 +29,14 @@ def main(request):
         "menu_items": MENU_ITEMS,
     }
     return render(request, "main.html", context)
+
+def about(request):
+    context = {
+        "project_information": "Информация о проекте",
+        "contact": "Контактные данные"
+    }
+
+    return render(request, "about.html", context)
 
 
 def catalog_posts(request):
@@ -40,10 +48,10 @@ def post_detail(request, post_slug):
 
 
 def catalog_categories(request):
-    links = []
-    for category in CATEGORIES:
-        url = reverse("blog:category_detail", args=[category["slug"]])
-        links.append(f'<p><a href="{url}">{category["name"]}</a></p>')
+    # links = []
+    # for category in CATEGORIES:
+    #     url = reverse("blog:category_detail", args=[category["slug"]])
+    #     links.append(f'<p><a href="{url}">{category["name"]}</a></p>')
 
     context = {
         "title": "Категории",

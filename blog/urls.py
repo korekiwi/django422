@@ -1,7 +1,7 @@
 # blog\urls.py ГЛАВНЫЙ
 from django.contrib import admin
 from django.urls import path
-from python_blog.views import main
+from python_blog.views import main, about
 from django.urls import include
 
 from django.conf import settings
@@ -22,6 +22,7 @@ path('blog/<slug:post_slug>/', views.post_detail)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", main, name="main"),
+    path("about/", about, name="about"),
 
     # Подключаем python_blog.urls
     path('posts/', include('python_blog.urls')),
