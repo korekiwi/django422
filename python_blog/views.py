@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.urls import reverse
 
+from posts_dataset import dataset
+
 CATEGORIES = [
     {"slug": "python", "name": "Python"},
     {"slug": "django", "name": "Django"},
@@ -12,6 +14,7 @@ CATEGORIES = [
 
 MENU_ITEMS = [
     {"title": "Главная", "url_name": "main"},
+    {"title": "О проекте", "url_name": "about"},
     {"title": "Все посты", "url_name": "blog:posts"},
     {"title": "Категории", "url_name": "blog:categories"},
     {"title": "Теги", "url_name": "blog:tags"},
@@ -32,6 +35,7 @@ def main(request):
 
 def about(request):
     context = {
+        "title": "О проекте",
         "project_information": "Информация о проекте",
         "contact": "Контактные данные"
     }
@@ -44,7 +48,12 @@ def catalog_posts(request):
 
 
 def post_detail(request, post_slug):
-    return HttpResponse(f"Страница поста {post_slug}")
+    for post in dataset:
+        if post.get('slug') == post_slug:
+            context = post
+            break
+
+    return render(request, "post_detail.html", context)
 
 
 def catalog_categories(request):

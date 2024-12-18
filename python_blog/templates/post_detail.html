@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block content %}
+{% if is_published %}
+    <h1>{{title}}</h1>
+    <p>{{post}}</p>
+    <p>{{hashtags}}</p>
+    <p>{{views}}</p>
+    <p>{{likes}}</p>
+    <p>{{comments}}</p>
+{% else %}
+    <p>Этот пост еще не был опубликован.</p>
+{% endif %}
+
+{% endblock content %}
