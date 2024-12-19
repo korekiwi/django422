@@ -7,11 +7,22 @@
 {% block content %}
 {% if is_published %}
     <h1>{{title}}</h1>
+
+    <p>
+        {% for hashtag in post.hashtags %}
+        #{{hashtag}}
+        {% endfor %}
+    </p>
+
     <p>{{post}}</p>
-    <p>{{hashtags}}</p>
-    <p>{{views}}</p>
-    <p>{{likes}}</p>
-    <p>{{comments}}</p>
+    <p>Просмотры: {{views}} | Лайки: {{likes}}</p>
+    <div class="comment">
+        {% for comment in comments %}
+        <div class="comment_username">{{comment.username}}</div>
+        <div class="comment_text">{{comment.text}}</div>
+        {% endfor %}
+    </div>
+
 {% else %}
     <p>Этот пост еще не был опубликован.</p>
 {% endif %}

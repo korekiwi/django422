@@ -12,14 +12,6 @@ CATEGORIES = [
     {"slug": "linux", "name": "Linux"},
 ]
 
-MENU_ITEMS = [
-    {"title": "Главная", "url_name": "main"},
-    {"title": "О проекте", "url_name": "about"},
-    {"title": "Все посты", "url_name": "blog:posts"},
-    {"title": "Категории", "url_name": "blog:categories"},
-    {"title": "Теги", "url_name": "blog:tags"},
-]
-
 
 def main(request):
     # catalog_categories_url = reverse("blog:categories")
@@ -29,7 +21,6 @@ def main(request):
         "title": "Главная страница",
         "text": "Текст главной страницы",
         "user_status": "moderator",
-        "menu_items": MENU_ITEMS,
     }
     return render(request, "main.html", context)
 
@@ -37,7 +28,7 @@ def about(request):
     context = {
         "title": "О проекте",
         "project_information": "Информация о проекте",
-        "contact": "Контактные данные"
+        "contact": "Контактные данные",
     }
 
     return render(request, "about.html", context)
@@ -46,7 +37,7 @@ def about(request):
 def catalog_posts(request):
     context = {
         "title": "Каталог постов",
-        "dataset_posts": dataset
+        "dataset_posts": dataset,
     }
 
     return render(request, "catalog_posts.html", context)

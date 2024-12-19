@@ -3,6 +3,13 @@
         {% for post in dataset_posts %}
            <div>
             <h3><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h3>
+            <p>
+                {% for hashtag in post.hashtags %}
+                #{{hashtag}}
+                {% endfor %}
+            </p>
+            <div>{{ post.post|truncatewords:10 }}</div>
+            <p>Просмотры: {{post.views}} | Лайки: {{ post.likes }}</p>
            </div>
         {% endfor %}
     </ul>
