@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 
 from posts_dataset import dataset
+from help_functions import python_slugify, python_slugify_list
 
 CATEGORIES = [
     {"slug": "python", "name": "Python"},
@@ -35,11 +36,12 @@ def about(request):
 
 
 def catalog_posts(request):
+
     context = {
         "title": "Каталог постов",
         "dataset_posts": dataset,
     }
-
+    
     return render(request, "catalog_posts.html", context)
 
 
@@ -88,4 +90,19 @@ def catalog_tags(request):
 
 
 def tag_detail(request, tag_slug):
-    return HttpResponse(f"Страница тега {tag_slug}")
+    dataset_posts = []
+
+    for post in dataset:
+        if tag_slug in python_slugify_list(post.get('hashtags')):
+            dataset_posts.append(post)
+
+    context = {
+        "title": f"Страница тега {tag_slug}",
+        "slug": tag_slug,
+        "dataset_posts": dataset_posts,
+    }
+
+    return render(request, "tag_detail.html", context)
+
+
+    # return HttpResponse(f"Страница тега {tag_slug}")

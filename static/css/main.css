@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #f0f0f0;
+    text-align: center;
 }
 
 nav ul {
@@ -13,4 +14,42 @@ nav ul {
 nav ul li {
     display: inline;
     margin-right: 20px;
+}
+
+.tags {
+    font-size: small;
+}
+
+.post_gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.short_post {
+    width: 500px;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.post {
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 800px;
+    padding: 20px
+}
+
+.comment {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    width: 400px;
+}
+
+.comment_username {
+    font-weight: bold;
 }

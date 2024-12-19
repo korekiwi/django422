@@ -1,16 +1,15 @@
-<nav>
-    <ul>
-        {% for post in dataset_posts %}
-           <div>
-            <h3><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h3>
-            <p>
-                {% for hashtag in post.hashtags %}
-                #{{hashtag}}
-                {% endfor %}
-            </p>
-            <div>{{ post.post|truncatewords:10 }}</div>
-            <p>Просмотры: {{post.views}} | Лайки: {{ post.likes }}</p>
-           </div>
-        {% endfor %}
-    </ul>
-</nav>
+{% load filters %}
+<div class="post_gallery">
+{% for post in dataset_posts %}
+    <div class="short_post">
+        <h3><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h3>
+        <p>
+            {% for hashtag in post.hashtags %}
+            <a href={% url "blog:tag_detail" hashtag|slugify %}>#{{hashtag}}</a>
+            {% endfor %}
+        </p>
+        <div>{{ post.post|truncatewords:10 }}</div>
+        <p>Просмотры: {{post.views}} | Лайки: {{ post.likes }}</p>
+    </div>
+{% endfor %}
+</div>
