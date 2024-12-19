@@ -25,5 +25,5 @@ urlpatterns = [
     path("about/", about, name="about"),
 
     # Подключаем python_blog.urls
-    path('posts/', include('python_blog.urls')),
+    path('posts/', include('python_blog.urls'), name='posts'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

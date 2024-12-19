@@ -44,7 +44,12 @@ def about(request):
 
 
 def catalog_posts(request):
-    return HttpResponse("Каталог постов")
+    context = {
+        "title": "Каталог постов",
+        "dataset_posts": dataset
+    }
+
+    return render(request, "catalog_posts.html", context)
 
 
 def post_detail(request, post_slug):
